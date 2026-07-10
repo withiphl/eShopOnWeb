@@ -49,9 +49,11 @@ jobs:
           container-registry-username: ${{ secrets.ACR_USERNAME }}
           container-registry-password: ${{ secrets.ACR_PASSWORD }}
           secret-name: aks-secret
+          namespace: eshoponweb-web017
           
       - uses: azure/k8s-deploy@v1
         with:
+          namespace: eshoponweb-web017
           manifests: | 
             .k8s/deployment.yaml
             .k8s/service.yaml
