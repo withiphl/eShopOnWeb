@@ -1,0 +1,26 @@
+name: Contrainer workflow
+om: [workflow_dispatch]
+env:
+  ACR_LOGIN_SERVER: aistraining.azurecr.io
+  ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
+  ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+  TAG_NAME: eshoponwebapp-demo-017:1.0.0
+
+Jobs:
+  build-container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Checkput source code
+        uses: actions/checkout@v7.0
+
+      - name: ACR Login
+        uses: docker/login-action@v4.4.0
+        with:
+          login-server: ${{ env.ACR_LOGIN_SERVER }}
+          username: ${{ env.ACR_USERNAME }}
+          password: ${{ env.ACR_PASSWORD }}
+      
+      - name: Build and push Docker image
+        run: docker build . -t ${{ env.ACR_LOGIN_SERVER }}/${{ env.TAG_NAME }} && docker push ${{ env.ACR_LOGIN_SERVER }}/${{ env.TAG_NAME }}
+      
