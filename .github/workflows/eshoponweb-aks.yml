@@ -6,7 +6,7 @@ env:
   ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
   TAG_NAME: eshoponwebapp-demo-017:1.0.0
   IMAGE_NAME: ${{ vars.ACR_LOGIN_SERVER }}/${{ vars.TAG_NAME }}
-  RESOURCE_GROUP: rg-017
+  RESOURCE_GROUP: aistrining
   CLUSTER_NAME: aks-demo
 
 jobs:
