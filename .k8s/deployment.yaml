@@ -31,5 +31,7 @@ spec:
           env:
             - name: ASPNETCORE_URLS
               value: http://+:80
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Docker
             - name: WebApiBaseAddress
               value: http://webapi
