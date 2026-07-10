@@ -41,6 +41,7 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           resource-group: ${{ env.RESOURCE_GROUP }}
           cluster-name: ${{ env.CLUSTER_NAME }}
+          
       - uses: azure/k8s-create-secret@v1
         with:
           container-registry-url: ${{ env.ACR_LOGIN_SERVER }}
