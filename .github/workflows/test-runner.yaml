@@ -2,7 +2,9 @@ name: Test Runner
 on: workflow_dispatch
 jobs:
   test-runner:
-    runs-on: 
-      - self-hosted
+    runs-on: self-hosted
     steps:
-      - run: echo "Test echo in first github self-hosted runner"
+     - run: echo "Test echo in first github runner"
+     
+     - name: Checkout
+       uses: actions/checkout@v7.0.0
