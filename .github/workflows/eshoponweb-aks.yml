@@ -11,6 +11,7 @@ env:
 
 jobs:
   build-container:
+    if: false
     runs-on: ubuntu-latest
     
     steps:
@@ -28,9 +29,10 @@ jobs:
         run: |
           docker build -f src/Web/Dockerfile -t ${{ env.ACR_LOGIN_SERVER }}/${{ env.TAG_NAME }} .
           docker push ${{ env.ACR_LOGIN_SERVER }}/${{ env.TAG_NAME }}
+          
     # ถ้าใช้ self host runner ไม่ต้อง checkout ซ้ำๆก็ได้ 
   deploy-to-aks:
-    needs: build-container
+    # needs: build-container
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7.0.0
